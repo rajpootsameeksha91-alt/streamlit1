@@ -24,16 +24,7 @@ def load_data():
 df = load_data()
 st.sidebar.markdown("## 🩺 Sidebar")
 page = st.sidebar.radio(
-    "Go to",
-    [
-        "🏠 Home",
-        "🔍 Exploratory Data Analysis",
-        "🏥 Hospital & Clinical Insights",
-        "💊 Medication Analysis",
-        "🔄 Readmission Analysis",
-        "📊 Interactive Dashboard",
-    ],)
-
+    "Go to",  [ "🏠 Home", "🔍 Exploratory Data Analysis", "🏥 Hospital & Clinical Insights","💊 Medication Analysis", "🔄 Readmission Analysis", "📊 Interactive Dashboard", ], )
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
@@ -46,8 +37,7 @@ if page == "🏠 Home":
     hero(
         "🩺 Diabetic Patient Healthcare Analysis",
         "An end-to-end exploratory analysis of diabetic patient hospital encounters — "
-        "demographics, clinical utilization, medications, and readmission patterns.",
-    )
+        "demographics, clinical utilization, medications, and readmission patterns.",)
 
     c1, c2, c3, c4, c5 = st.columns(5)
     kpi_card("Total Encounters", f"{len(df):,}", c1)
