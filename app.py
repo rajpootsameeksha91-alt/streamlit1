@@ -60,7 +60,7 @@ if page == "🏠 Home":
 
     left, right = st.columns([1.3, 1])
     with left:
-        section_title("Dataset Snapshot")
+        section_title("Dataset")
         st.dataframe(df.drop(columns=["age"]).assign(age=df["age"].astype(str)).head(12), use_container_width=True)
     with right:
         section_title("Column Groups")
