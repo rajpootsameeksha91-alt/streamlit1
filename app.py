@@ -309,7 +309,7 @@ elif page == "📊 Interactive Dashboard":
             sns.histplot(filtered, x="Hospital_Stay", bins=15, color="#0F9D8C", ax=ax)
             st.pyplot(fig)
 
-        section_title("Filtered Data Table")
+        section_title("Data Table")
         display_df = filtered.drop(columns=["age"]).assign(age=filtered["age"].astype(str))
         st.dataframe(display_df.head(500), use_container_width=True, height=350)
 
