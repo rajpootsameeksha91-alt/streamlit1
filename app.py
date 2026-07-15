@@ -117,7 +117,7 @@ elif page == "🔍 Exploratory Data Analysis":
             race_counts = df["race"].value_counts()
             st.bar_chart(race_counts)
             
-        with col2:
+    with col2:
         st.markdown("#### Race Distribution")
         plt.figure(figsize=(6, 5))
         sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest")
