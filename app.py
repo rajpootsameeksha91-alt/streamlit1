@@ -9,7 +9,7 @@ from style import ( inject_css, hero, kpi_card, section_title, insight, COLOR_SE
 
 st.set_page_config(  page_title="Diabetic Patient Healthcare Analysis", page_icon="🩺", layout="wide",)
 
-#inject_css()
+inject_css()
 sns.set_theme(style="whitegrid", palette="crest")
 
 def load_data():
