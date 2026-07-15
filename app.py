@@ -54,9 +54,7 @@ if page == "🏠 Home":
     st.write(
         "This dashboard explores a real-world clinical dataset of diabetic patient  "
         ". The goal is purely analytical — understanding who the patients "
-        "are, how they are treated, and how often they return to the hospital, without building "
-        "any predictive model."
-    )
+        "are, how they are treated, and how often they return to the hospital.")
 
     left, right = st.columns([1.3, 1])
     with left:
