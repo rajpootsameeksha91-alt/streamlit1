@@ -52,11 +52,9 @@ if page == "🏠 Home":
     st.write("")
     section_title("Project Overview")
     st.write(
-        "This dashboard explores a real-world clinical dataset of diabetic patient encounters "
-        "across 130 US hospitals. The goal is purely analytical — understanding who the patients "
-        "are, how they are treated, and how often they return to the hospital, without building "
-        "any predictive model."
-    )
+        "This dashboard explores a real-world clinical dataset of diabetic patient. "
+        "The goal is purely analytical — understanding who the patients "
+        "are, how they are treated, and how often they return to the hospital. ")
 
     left, right = st.columns([1.3, 1])
     with left:
