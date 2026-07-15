@@ -60,7 +60,7 @@ if page == "🏠 Home":
 
     left, right = st.columns([1.3, 1])
     with left:
-        section_title("Dataset Snapshot")
+        section_title("Dataset")
         st.dataframe(df.drop(columns=["age"]).assign(age=df["age"].astype(str)).head(12), use_container_width=True)
     with right:
         section_title("Column Groups")
@@ -73,19 +73,15 @@ if page == "🏠 Home":
               Outpatient/Emergency/Inpatient Visits
             - **Diagnoses**: diag_1, diag_2, diag_3, Diagnoses
             - **Medications (23 drugs)**: metformin, insulin, glipizide, etc.
-            - **Outcome**: readmitted
-            """
-        )
+            - **Outcome**: readmitted""")
 
     section_title("Column Data Types & Missing Values")
     info_df = pd.DataFrame({
         "Column": df.columns,
         "Data Type": df.dtypes.astype(str).values,
         "Missing Values": df.isnull().sum().values,
-        "Unique Values": [df[c].nunique() for c in df.columns],
-    })
+        "Unique Values": [df[c].nunique() for c in df.columns],})
     st.dataframe(info_df, use_container_width=True, height=300)
-
 
 elif page == "🔍 Exploratory Data Analysis":
     st.title("🔍 Exploratory Data Analysis")
@@ -109,12 +105,10 @@ elif page == "🔍 Exploratory Data Analysis":
             ax.axis('equal')
             st.pyplot(fig)
 
-        st.markdown("#### Age Distribution Split by Gender")
-        fig, ax = plt.subplots(figsize=(10, 5))
-        sns.countplot(data=df, x="age", hue="gender", palette="crest", ax=ax)
-        ax.set_xlabel("Age Group")
-        ax.set_ylabel("Number of Encounters")
-        st.pyplot(fig)
+st.markdown("#### Age Distribution Split by Gender")
+plt.figure(figsize=(7, 3.5)) 
+sns.countplot(data=df, x="age", hue="gender", palette="crest")
+st.pyplot(plt.gcf()) 
 
         insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
                 "hospital visits are concentrated in middle-aged to elderly populations.")
