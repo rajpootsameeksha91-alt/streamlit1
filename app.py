@@ -145,7 +145,7 @@ elif page == "🏥 Hospital & Clinical Insights":
         with col1:
             st.markdown("#### Hospital Stay Duration")
             plt.figure(figsize=(6, 4))
-            sns.histplot(data=df, x="Hospital_Stay", bins=15, color="#0F9D8C", kde=True)
+            sns.histplot(df, x="Hospital_Stay", bins=15, color="#0F9D8C", kde=True)
             plt.title("Hospital Stay Duration Distribution")
             plt.xlabel("Days in Hospital")
             st.pyplot(plt.gcf())
@@ -153,7 +153,7 @@ elif page == "🏥 Hospital & Clinical Insights":
         
         with col2:
             fig, ax = plt.subplots(figsize=(6, 4))
-            sns.boxplot(data=df, x="age", y="Hospital_Stay", palette="crest", ax=ax)
+            sns.boxplot(df, x="age", y="Hospital_Stay", palette="crest", ax=ax)
             ax.set_title("Hospital Stay by Age Group")
             plt.xticks(rotation=45)
             st.pyplot(fig)
