@@ -301,10 +301,10 @@ elif page == "📊 Interactive Dashboard":
 
         col1, col2 = st.columns(2)
         with col1:
-            st.markdown("#### Age Group Breakdown")
+            st.markdown("#### Age Group Breakdown(Filtered)")
             st.bar_chart(filtered["age"].value_counts())
         with col2:
-            st.markdown("#### Hospital Stay Distribution")
+            st.markdown("#### Hospital Stay Distribution(Filtered)")
             fig, ax = plt.subplots(figsize=(6, 4))
             sns.histplot(filtered, x="Hospital_Stay", bins=15, color="#0F9D8C", ax=ax)
             st.pyplot(fig)
