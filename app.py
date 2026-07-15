@@ -17,14 +17,11 @@ st.set_page_config(
     page_title="Diabetic Patient Healthcare Analysis",
     page_icon="🩺",
     layout="wide",
-    initial_sidebar_state="expanded",
 )
 
 inject_css()
 sns.set_theme(style="whitegrid", palette="crest")
 
-
-@st.cache_data
 def load_data():
     df = pd.read_csv("cleaned_diabetic_data.csv")
     df["age"] = pd.Categorical(df["age"], categories=AGE_ORDER, ordered=True)
@@ -203,7 +200,6 @@ elif page == "🏥 Hospital & Clinical Insights":
         insight("Lab Procedures, Medications, and Hospital Stay show the strongest positive "
                 "relationships, suggesting longer admissions involve more tests and prescriptions.")
 
-
 elif page == "💊 Medication Analysis":
     hero("💊 Medication Analysis", "How diabetes medications are prescribed, adjusted, and used across patients.")
 
@@ -240,7 +236,6 @@ elif page == "💊 Medication Analysis":
 
     insight("Insulin is the most frequently adjusted medication, with usage rising sharply "
             "after age 40 and remaining high through the elderly population.")
-
 
 elif page == "🔄 Readmission Analysis":
     hero("🔄 Readmission Analysis", "Examining which factors relate to patients returning to the hospital.")
