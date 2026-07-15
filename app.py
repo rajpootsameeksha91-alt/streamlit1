@@ -119,12 +119,12 @@ with tab2:
             st.bar_chart(race_counts)
             
         with col2:
-        st.markdown("#### Race Distribution")
-        plt.figure(figsize=(6, 5))
-        sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest")
-        plt.xlabel("Number of Encounters")
-        st.pyplot(plt.gcf())
-        plt.close()
+            st.markdown("#### Race Distribution")
+            plt.figure(figsize=(6, 5))
+            sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest")
+            plt.xlabel("Number of Encounters")
+            st.pyplot(plt.gcf())
+            plt.close()
 
 
 elif page == "🏥 Hospital & Clinical Insights":
