@@ -98,18 +98,15 @@ elif page == "🔍 Exploratory Data Analysis":
             st.bar_chart(age_counts)
             
         with col2:
-            st.markdown("#### Gender Distribution")
-            fig, ax = plt.subplots(figsize=(6, 5))
-            gender_counts = df["gender"].value_counts()
-            ax.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=90, colors=['#0F9D8C', '#38BDF8'])
-            ax.axis('equal')
-            st.pyplot(fig)
+         st.markdown("#### Gender Distribution")
+        plt.figure(figsize=(6, 5))
+        plt.pie(df["gender"].value_counts(), labels=df["gender"].unique(), autopct='%1.1f%%', startangle=90, colors=['#0F9D8C', '#38BDF8'])
+        st.pyplot(plt.gcf())
 
         st.markdown("#### Age Distribution Split by Gender")
-        plt.figure(figsize=(7, 3.5)) 
-        sns.countplot(data=df, x="age", hue="gender", palette="crest")
-        st.pyplot(plt.gcf()) 
-
+        plt.figure(figsize=(7, 3.5))
+        sns.countplot(df, x="age", hue="gender", palette="crest")
+        st.pyplot(plt.gcf())
         insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
                 "hospital visits are concentrated in middle-aged to elderly populations.")
 
@@ -121,12 +118,12 @@ elif page == "🔍 Exploratory Data Analysis":
             st.bar_chart(race_counts)
             
         with col2:
-            fig, ax = plt.subplots(figsize=(6, 5))
-            sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest", ax=ax)
-            ax.set_xlabel("Number of Encounters")
-            ax.set_ylabel("")
-            ax.set_title("Race Distribution (Seaborn Vertical)")
-            st.pyplot(fig)
+        st.markdown("#### Race Distribution")
+        plt.figure(figsize=(6, 5))
+        sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest")
+        plt.xlabel("Number of Encounters")
+        st.pyplot(plt.gcf())
+        plt.close()
 
 
 elif page == "🏥 Hospital & Clinical Insights":
