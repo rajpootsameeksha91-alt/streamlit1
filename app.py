@@ -88,25 +88,28 @@ elif page == "🔍 Exploratory Data Analysis":
 
     tab1, tab2 = st.tabs(["Age & Gender", "Race Distribution"])
 
-    with tab1:
+with tab1:
         col1, col2 = st.columns(2)
+        
         with col1:
             st.markdown("#### Patient Count by Age Group")
             age_counts = df["age"].value_counts().sort_index()
             st.bar_chart(age_counts)
             
         with col2:
-         st.markdown("#### Gender Distribution")
-        plt.figure(figsize=(6, 5))
-        plt.pie(df["gender"].value_counts(), labels=df["gender"].unique(), autopct='%1.1f%%', startangle=90, colors=['#0F9D8C', '#38BDF8'])
-        st.pyplot(plt.gcf())
+            st.markdown("#### Gender Distribution")
+            plt.figure(figsize=(5, 5)) # Pie chart ke liye size thoda chhota rakhein
+            plt.pie(df["gender"].value_counts(), labels=df["gender"].value_counts().index, autopct='%1.1f%%', startangle=90, colors=['#0F9D8C', '#38BDF8'])
+            st.pyplot(plt.gcf())
+            plt.close() # Memory free karne ke liye
 
         st.markdown("#### Age Distribution Split by Gender")
         plt.figure(figsize=(7, 3.5))
-        sns.countplot(df, x="age", hue="gender", palette="crest")
+        sns.countplot(data=df, x="age", hue="gender", palette="crest")
         st.pyplot(plt.gcf())
-        insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
-                "hospital visits are concentrated in middle-aged to elderly populations.")
+        plt.close()
+        
+        insight("Most encounters come from patients aged 50–80, indicating diabetes-related hospital visits are concentrated in middle-aged to elderly populations.")
 
     with tab2:
         col1, col2 = st.columns(2)
