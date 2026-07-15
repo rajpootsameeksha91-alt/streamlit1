@@ -131,7 +131,7 @@ elif page == "🔍 Exploratory Data Analysis":
             sns.barplot(y=df["race"].value_counts().index, x=df["race"].value_counts().values, palette="crest", ax=ax)
             ax.set_xlabel("Number of Encounters")
             ax.set_ylabel("")
-            ax.set_title("Race Distribution (Seaborn Vertical)")
+            ax.set_title("Race Distribution")
             st.pyplot(fig)
 
 
