@@ -26,7 +26,6 @@ sns.set_theme(style="whitegrid", palette="crest")
 
 @st.cache_data
 def load_data():
-    # FIXED PATH: Removed "data/" since the file is on your main GitHub page
     df = pd.read_csv("cleaned_diabetic_data.csv")
     df["age"] = pd.Categorical(df["age"], categories=AGE_ORDER, ordered=True)
     df["admission_type"] = df["admission_type_id"].map(ADMISSION_TYPE).fillna("Unknown")
