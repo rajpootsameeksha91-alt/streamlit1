@@ -4,20 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from mappings import (
-    ADMISSION_TYPE, DISCHARGE_DISPOSITION, ADMISSION_SOURCE,
-    AGE_ORDER, MEDICATION_COLUMNS, READMIT_ORDER, READMIT_LABELS,
-)
-from style import (
-    inject_css, hero, kpi_card, section_title, insight,
-    COLOR_SEQUENCE, GENDER_COLOR_MAP,
-)
+from mappings import ( ADMISSION_TYPE, DISCHARGE_DISPOSITION, ADMISSION_SOURCE,AGE_ORDER, MEDICATION_COLUMNS, READMIT_ORDER, READMIT_LABELS,)
+from style import ( inject_css, hero, kpi_card, section_title, insight, COLOR_SEQUENCE, GENDER_COLOR_MAP,)
 
-st.set_page_config(
-    page_title="Diabetic Patient Healthcare Analysis",
-    page_icon="🩺",
-    layout="wide",
-)
+st.set_page_config(  page_title="Diabetic Patient Healthcare Analysis", page_icon="🩺", layout="wide",)
 
 inject_css()
 sns.set_theme(style="whitegrid", palette="crest")
@@ -31,9 +21,7 @@ def load_data():
     df["readmitted_label"] = df["readmitted"].map(READMIT_LABELS)
     return df
 
-
 df = load_data()
-
 st.sidebar.markdown("## 🩺 Sidebar")
 page = st.sidebar.radio(
     "Go to",
@@ -44,9 +32,8 @@ page = st.sidebar.radio(
         "💊 Medication Analysis",
         "🔄 Readmission Analysis",
         "📊 Interactive Dashboard",
-    ],
-    label_visibility="collapsed",
-)
+    ],)
+
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
