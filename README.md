@@ -39,4 +39,4 @@ Opens at http://localhost:8501
 
 ## Libraries
 
-streamlit, pandas, numpy, plotly, matplotlib, seaborn
+streamlit, pandas, numpy, matplotlib, seaborn
