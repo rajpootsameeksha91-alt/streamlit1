@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from mappings import ( ADMISSION_TYPE, DISCHARGE_DISPOSITION, ADMISSION_SOURCE,AGE_ORDER, MEDICATION_COLUMNS, READMIT_ORDER, READMIT_LABELS,)
-from style import ( inject_css, hero, kpi_card, section_title, insight, COLOR_SEQUENCE, GENDER_COLOR_MAP,)
+from mappings import ( ADMISSION_TYPE, DISCHARGE_DISPOSITION, ADMISSION_SOURCE, AGE_ORDER, MEDICATION_COLUMNS, READMIT_ORDER, READMIT_LABELS,)
+from style import ( inject_css, section_title, insight, COLOR_SEQUENCE, GENDER_COLOR_MAP,) # hero aur kpi_card completely deleted
 
 st.set_page_config(  page_title="Diabetic Patient Healthcare Analysis", page_icon="🩺", layout="wide",)
 
@@ -33,17 +33,22 @@ st.sidebar.info(
     "to uncover patterns in demographics, treatment, and readmission.")
 
 if page == "🏠 Home":
-    hero(
-        "🩺 Diabetic Patient Healthcare Analysis",
-        "An end-to-end exploratory analysis of diabetic patient hospital encounters — "
-        "demographics, clinical utilization, medications, and readmission patterns.",)
+    st.title("🩺 Diabetic Patient Healthcare Analysis")
+    st.caption("An end-to-end exploratory analysis of diabetic patient hospital encounters — demographics, clinical utilization, medications, and readmission patterns.")
+    st.markdown("---")
 
-    c1, c2, c3, c4, c5 = st.columns(5)
-    kpi_card("Total Encounters", f"{len(df):,}", c1)
-    kpi_card("Unique Patients", f"{df['Patient_ID'].nunique():,}", c2)
-    kpi_card("Avg Hospital Stay", f"{df['Hospital_Stay'].mean():.1f} days", c3)
-    kpi_card("Readmitted <30 Days", f"{(df['readmitted'] == '<30').mean() * 100:.1f}%", c4)
-    kpi_card("On Diabetes Medication", f"{(df['diabetesMed'] == 'Yes').mean() * 100:.1f}%", c5)
+    # 🆕 CHANGED: Variables ka naam metric_col1 se metric_col5 kar diya hai
+    metric_col1, metric_col2, metric_col3, metric_col4, metric_col5 = st.columns(5)
+    with metric_col1:
+        st.metric(label="Total Encounters", value=f"{len(df):,}")
+    with metric_col2:
+        st.metric(label="Unique Patients", value=f"{df['Patient_ID'].nunique():,}")
+    with metric_col3:
+        st.metric(label="Avg Hospital Stay", value=f"{df['Hospital_Stay'].mean():.1f} days")
+    with metric_col4:
+        st.metric(label="Readmitted <30 Days", value=f"{(df['readmitted'] == '<30').mean() * 100:.1f}%")
+    with metric_col5:
+        st.metric(label="On Diabetes Medication", value=f"{(df['diabetesMed'] == 'Yes').mean() * 100:.1f}%")
 
     st.write("")
     section_title("Project Overview")
@@ -84,7 +89,9 @@ if page == "🏠 Home":
 
 
 elif page == "🔍 Exploratory Data Analysis":
-    hero("🔍 Exploratory Data Analysis", "Understanding the patient population — age, gender, and race distribution.")
+    st.title("🔍 Exploratory Data Analysis")
+    st.caption("Understanding the patient population — age, gender, and race distribution.")
+    st.markdown("---")
 
     tab1, tab2 = st.tabs(["Age & Gender", "Race Distribution"])
 
@@ -130,7 +137,9 @@ elif page == "🔍 Exploratory Data Analysis":
 
 
 elif page == "🏥 Hospital & Clinical Insights":
-    hero("🏥 Hospital & Clinical Insights", "Admissions, hospital stay duration, procedures, and diagnoses patterns.")
+    st.title("🏥 Hospital & Clinical Insights")
+    st.caption("Admissions, hospital stay duration, procedures, and diagnoses patterns.")
+    st.markdown("---")
 
     tab1, tab2, tab3 = st.tabs(["Admission Patterns", "Hospital Stay & Details", "Correlations"])
 
@@ -176,8 +185,11 @@ elif page == "🏥 Hospital & Clinical Insights":
         insight("Lab Procedures, Medications, and Hospital Stay show the strongest positive "
                 "relationships, suggesting longer admissions involve more tests and prescriptions.")
 
+
 elif page == "💊 Medication Analysis":
-    hero("💊 Medication Analysis", "How diabetes medications are prescribed, adjusted, and used across patients.")
+    st.title("💊 Medication Analysis")
+    st.caption("How diabetes medications are prescribed, adjusted, and used across patients.")
+    st.markdown("---")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -213,8 +225,11 @@ elif page == "💊 Medication Analysis":
     insight("Insulin is the most frequently adjusted medication, with usage rising sharply "
             "after age 40 and remaining high through the elderly population.")
 
+
 elif page == "🔄 Readmission Analysis":
-    hero("🔄 Readmission Analysis", "Examining which factors relate to patients returning to the hospital.")
+    st.title("🔄 Readmission Analysis")
+    st.caption("Examining which factors relate to patients returning to the hospital.")
+    st.markdown("---")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -232,66 +247,4 @@ elif page == "🔄 Readmission Analysis":
 
     st.markdown("#### Clinical Utilization Metrics vs Readmission Status")
     fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-    sns.boxplot(data=df, x="readmitted", y="Hospital_Stay", order=READMIT_ORDER, palette="crest", ax=ax[0])
-    ax[0].set_title("Hospital Stay vs Readmission")
-    
-    sns.boxplot(data=df, x="readmitted", y="Lab_Procedures", order=READMIT_ORDER, palette="crest", ax=ax[1])
-    ax[1].set_title("Lab Procedures vs Readmission")
-    st.pyplot(fig)
-
-    insight("Patients readmitted within 30 days tend to have longer hospital stays and more "
-            "medications on average, hinting these encounters involve more complex cases.")
-
-
-elif page == "📊 Interactive Dashboard":
-    hero("📊 Interactive Dashboard", "Filter the dataset live and explore patterns dynamically.")
-
-    with st.expander("🔧 Filters", expanded=True):
-        f1, f2, f3, f4 = st.columns(4)
-        with f1:
-            genders = st.multiselect("Gender", sorted(df["gender"].unique()), default=list(df["gender"].unique()))
-        with f2:
-            races = st.multiselect("Race", sorted(df["race"].unique()), default=list(df["race"].unique()))
-        with f3:
-            age_groups = st.multiselect("Age Group", AGE_ORDER, default=AGE_ORDER)
-        with f4:
-            admission_types = st.multiselect(
-                "Admission Type", sorted(df["admission_type"].unique()),
-                default=list(df["admission_type"].unique())
-            )
-
-    # FIXED FILTER: Handles Categorical data types safely
-    selected_ages = [str(a) for a in age_groups]
-    filtered = df[
-        df["gender"].isin(genders)
-        & df["race"].isin(races)
-        & df["age"].isin(selected_ages)
-        & df["admission_type"].isin(admission_types)
-    ]
-
-    if filtered.empty:
-        st.warning("No records match the selected filters. Please adjust your selection.")
-    else:
-        c1, c2, c3, c4 = st.columns(4)
-        kpi_card("Filtered Encounters", f"{len(filtered):,}", c1)
-        kpi_card("Avg Hospital Stay", f"{filtered['Hospital_Stay'].mean():.1f} days", c2)
-        kpi_card("Readmitted <30 Days", f"{(filtered['readmitted'] == '<30').mean() * 100:.1f}%", c3)
-        kpi_card("Avg Medications", f"{filtered['Medications'].mean():.1f}", c4)
-
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("#### Age Group Breakdown (Filtered)")
-            st.bar_chart(filtered["age"].value_counts())
-        with col2:
-            st.markdown("#### Hospital Stay Distribution (Filtered)")
-            fig, ax = plt.subplots(figsize=(6, 4))
-            sns.histplot(filtered, x="Hospital_Stay", bins=15, color="#0F9D8C", ax=ax)
-            st.pyplot(fig)
-
-        section_title("Filtered Data Table")
-        display_df = filtered.drop(columns=["age"]).assign(age=filtered["age"].astype(str))
-        st.dataframe(display_df.head(500), use_container_width=True, height=350)
-
-        csv = display_df.to_csv(index=False).encode("utf-8")
-        st.download_button("⬇️ Download Filtered Data as CSV", data=csv,
-                           file_name="filtered_diabetic_data.csv", mime="text/csv")
+    sns.boxplot(data=df, x="readmitted", y="Hospital_Stay", order=READMIT_ORDER, palette="crest", ax=ax
