@@ -105,10 +105,10 @@ elif page == "🔍 Exploratory Data Analysis":
             ax.axis('equal')
             st.pyplot(fig)
 
-st.markdown("#### Age Distribution Split by Gender")
-plt.figure(figsize=(7, 3.5)) 
-sns.countplot(data=df, x="age", hue="gender", palette="crest")
-st.pyplot(plt.gcf()) 
+        st.markdown("#### Age Distribution Split by Gender")
+        plt.figure(figsize=(7, 3.5)) 
+        sns.countplot(data=df, x="age", hue="gender", palette="crest")
+        st.pyplot(plt.gcf()) 
 
         insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
                 "hospital visits are concentrated in middle-aged to elderly populations.")
