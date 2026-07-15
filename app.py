@@ -12,7 +12,7 @@ st.set_page_config(
 # 1. Simple Data Load
 @st.cache_data
 def load_data():
-    # Aapki main cleaned CSV file
+    # FIXED PATH: Looking directly for the file on your main GitHub page
     df = pd.read_csv("cleaned_diabetic_data.csv")
     return df
 
@@ -39,6 +39,7 @@ if page == "Home":
     st.subheader("Dataset Preview")
     st.dataframe(df.head(10), use_container_width=True)
 
+# 4. EDA PAGE (Charts)
 elif page == "Exploratory Data Analysis":
     st.title("🔍 Exploratory Data Analysis")
     
