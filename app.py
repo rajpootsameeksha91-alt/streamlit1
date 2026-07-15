@@ -111,7 +111,7 @@ with tab1:
         
         insight("Most encounters come from patients aged 50–80, indicating diabetes-related hospital visits are concentrated in middle-aged to elderly populations.")
 
-    with tab2:
+with tab2:
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("#### Patient Count by Race")
