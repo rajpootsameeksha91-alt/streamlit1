@@ -143,11 +143,14 @@ elif page == "🏥 Hospital & Clinical Insights":
     with tab2:
         col1, col2 = st.columns(2)
         with col1:
-            fig, ax = plt.subplots(figsize=(6, 4))
-            sns.histplot(df, x="Hospital_Stay", bins=15, color="#0F9D8C", kde=True, ax=ax)
-            ax.set_title("Hospital Stay Duration Distribution")
-            ax.set_xlabel("Days in Hospital")
-            st.pyplot(fig)
+            st.markdown("#### Hospital Stay Duration")
+            plt.figure(figsize=(6, 4))
+            sns.histplot(data=df, x="Hospital_Stay", bins=15, color="#0F9D8C", kde=True)
+            plt.title("Hospital Stay Duration Distribution")
+            plt.xlabel("Days in Hospital")
+            st.pyplot(plt.gcf())
+            plt.close()
+        
         with col2:
             fig, ax = plt.subplots(figsize=(6, 4))
             sns.boxplot(data=df, x="age", y="Hospital_Stay", palette="crest", ax=ax)
