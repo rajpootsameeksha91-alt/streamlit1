@@ -40,7 +40,7 @@ def load_data():
 
 df = load_data()
 
-st.sidebar.markdown("## 🩺 Navigation")
+st.sidebar.markdown("## 🩺 Sidebar")
 page = st.sidebar.radio(
     "Go to",
     [
