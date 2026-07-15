@@ -1,9 +1,7 @@
 # 🩺 Diabetic Patient Healthcare Analysis
 
 A Streamlit-based data analysis and dashboard project exploring 100,000+ diabetic patient
-hospital encounters across 130 US hospitals. Pure EDA + visualization + dashboard —
-no ML/prediction model.
-
+hospital encounters across 130 US hospitals. Pure EDA + visualization + dashboard.
 ## Project Structure
 
 ```
