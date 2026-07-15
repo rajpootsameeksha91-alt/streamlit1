@@ -30,8 +30,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
 st.sidebar.info(
     "This project analyzes 100,000+ diabetic patient hospital encounters "
-    "to uncover patterns in demographics, treatment, and readmission."
-)
+    "to uncover patterns in demographics, treatment, and readmission.")
 
 if page == "🏠 Home":
     hero(
