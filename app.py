@@ -107,7 +107,7 @@ elif page == "🔍 Exploratory Data Analysis":
         ax.set_ylabel("Total Visits")
         st.pyplot(fig)
 
-        insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
+        insight("Most visits are from patients aged 50–80, indicating diabetes-related "
                 "hospital visits are concentrated in middle-aged to elderly populations.")
 
     with tab2:
@@ -158,10 +158,6 @@ elif page == "🏥 Hospital & Clinical Insights":
         st.markdown("#### Average Prior Visits by Type")
         visits_summary = df[["Outpatient_Visits", "Emergency_Visits", "Inpatient_Visits"]].mean()
         st.bar_chart(visits_summary)
-
-        insight("A large majority of patients have zero prior outpatient/emergency/inpatient visits, "
-                "so average counts stay low even though a small subset of patients drive frequent visits.")
-
     with tab3:
         numeric_cols = ["Hospital_Stay", "Lab_Procedures", "Procedures", "Medications",
                         "Outpatient_Visits", "Emergency_Visits", "Inpatient_Visits", "Diagnoses"]
