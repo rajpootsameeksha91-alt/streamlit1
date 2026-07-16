@@ -111,7 +111,7 @@ elif page == "🔍 Exploratory Data Analysis":
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.countplot(data=df, x="age", hue="gender", palette="crest", ax=ax)
         ax.set_xlabel("Age Group")
-        ax.set_ylabel("Number of Encounters")
+        ax.set_ylabel("Total Visits")
         st.pyplot(fig)
 
         insight("Most encounters come from patients aged 50–80, indicating diabetes-related "
@@ -243,8 +243,6 @@ elif page == "🔄 Readmission Analysis":
         st.pyplot(fig)
 
     st.markdown("#### Clinical Utilization Metrics vs Readmission Status")
-    
-    # ✅ Fixed: Subplots dimensions and alignment are completely fixed now
     fig, ax = plt.subplots(1, 2, figsize=(12, 5))
     sns.boxplot(data=df, x="readmitted", y="Hospital_Stay", order=READMIT_ORDER, palette="crest", ax=ax[0])
     ax[0].set_title("Hospital Stay vs Readmission")
@@ -311,6 +309,4 @@ elif page == "📊 Interactive Dashboard":
         display_df = filtered.drop(columns=["age"]).assign(age=filtered["age"].astype(str))
         st.dataframe(display_df.head(500), use_container_width=True, height=350)
 
-        csv = display_df.to_csv(index=False).encode("utf-8")
-        st.download_button("⬇️ Download Filtered Data as CSV", data=csv,
-                           file_name="filtered_diabetic_data.csv", mime="text/csv")
+
