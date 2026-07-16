@@ -51,12 +51,9 @@ if page == "🏠 Home":
 
     st.write("")
     section_title("Project Overview")
-    st.write(
-        "This dashboard explores a real-world clinical dataset of diabetic patient. "
-        "The goal is purely analytical — understanding who the patients "
-        "are, how they are treated, and how often they return to the hospital. ")
+    st.write("This dashboard explores a real-world clinical dataset of diabetic patient. The goal is purely analytical — understanding who the patients are, how they are treated, and how often they return to the hospital. ")
 
-left, right = st.columns([1.3, 1])
+    left, right = st.columns([1.3, 1])
     with left:
         section_title("Dataset")
         st.dataframe(df.drop(columns=["age"]).assign(age=df["age"].astype(str)).head(12), use_container_width=True)
