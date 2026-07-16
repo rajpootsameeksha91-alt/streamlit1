@@ -94,6 +94,8 @@
 
 # def insight(text):
 #     st.markdown(f'<div class="insight-box"> {text}</div>', unsafe_allow_html=True)
+
+
 import streamlit as st
 
 CUSTOM_CSS = """
@@ -125,18 +127,28 @@ section[data-testid="stSidebar"] * {
     border: 1px solid #DFF3F0;
 }
 
-[data-testid="stExpander"] [data-testid="stText"] {
-    color: #0B4F4A !important;
-    font-weight: 600;
+/* --- ULTIMATE FIX FOR DROPDOWN VISIBILITY --- */
+/* Dropdown box ka background aur border */
+div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    border: 2px solid #0F9D8C !important;
 }
 
-/* Hero Section */
-.app-hero {
-    background: linear-gradient(120deg, #E0F2FE 0%, #CFFAFE 45%, #BAE6FD 100%) !important;
-    padding: 34px 40px;
-    border-radius: 22px;
-    border-left: 8px solid #0F9D8C;
+/* Dropdown list ka background (jahan Male/Female likha hai) */
+div[role="listbox"] {
+    background-color: #FFFFFF !important;
 }
+
+/* Dropdown list ka text color */
+div[role="listbox"] span {
+    color: #1E293B !important;
+}
+
+/* Selected tag (Red box) ka text color */
+[data-baseweb="tag"] span {
+    color: #FFFFFF !important;
+}
+/* ------------------------------------------- */
 
 .section-title {
     font-family: 'Poppins', sans-serif;
@@ -148,22 +160,6 @@ section[data-testid="stSidebar"] * {
     margin: 18px 0 14px 0;
 }
 
-.metric-card {
-    background: #FFFFFF;
-    border-radius: 18px;
-    padding: 18px 20px;
-    box-shadow: 0 6px 18px rgba(11, 79, 74, 0.08);
-    border: 1px solid #DFF3F0;
-    text-align: center;
-}
-
-.metric-value {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #0F9D8C !important;
-}
-
 .insight-box {
     background: #FFFFFF;
     border-left: 5px solid #38BDF8;
@@ -172,18 +168,6 @@ section[data-testid="stSidebar"] * {
     margin: 10px 0;
     color: #0B2E33 !important;
 }
-
-/* --- FIX FOR DROPDOWN VISIBILITY --- */
-div[data-baseweb="select"] span {
-    color: #1E293B !important; 
-}
-[data-baseweb="tag"] span {
-    color: white !important;
-}
-div[role="listbox"] {
-    background-color: #FFFFFF !important;
-}
-/* ----------------------------------- */
 
 footer {visibility: hidden;}
 #MainMenu {visibility: hidden;}
