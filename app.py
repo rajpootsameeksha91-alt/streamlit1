@@ -75,14 +75,8 @@ if page == "🏠 Home":
             """
         )
 
-    section_title("Column Data Types & Missing Values")
-    info_df = pd.DataFrame({
-        "Column": df.columns,
-        "Data Type": df.dtypes.astype(str).values,
-        "Missing Values": df.isnull().sum().values,
-        "Unique Values": [df[c].nunique() for c in df.columns],
-    })
-    st.dataframe(info_df, use_container_width=True, height=300)
+        st.subheader("Statistical Summary") 
+        st.dataframe(df.describe(), use_container_width=True)
 
 
 elif page == "🔍 Exploratory Data Analysis":
