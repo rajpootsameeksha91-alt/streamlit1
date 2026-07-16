@@ -76,7 +76,7 @@ if page == "🏠 Home":
         )
 
         section_title("Column Data Types & Missing Values")
-           info_df = pd.DataFrame({
+          info_df = pd.DataFrame({
                "Column": df.columns,
                "Data Type": df.dtypes.astype(str).values,
                "Missing Values": df.isnull().sum().values,
