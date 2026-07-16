@@ -56,7 +56,7 @@ if page == "🏠 Home":
         "The goal is purely analytical — understanding who the patients "
         "are, how they are treated, and how often they return to the hospital. ")
 
-    left, right = st.columns([1.3, 1])
+left, right = st.columns([1.3, 1])
     with left:
         section_title("Dataset")
         st.dataframe(df.drop(columns=["age"]).assign(age=df["age"].astype(str)).head(12), use_container_width=True)
@@ -72,14 +72,14 @@ if page == "🏠 Home":
             - **Outcome**: readmitted
             """)
 
-     section_title("Column Data Types & Missing Values")
-     info_df = pd.DataFrame({
-         "Column": df.columns,
-         "Data Type": df.dtypes.astype(str).values,
-         "Missing Values": df.isnull().sum().values,
-         "Unique Values": [df[c].nunique() for c in df.columns],
-     })
-     st.dataframe(info_df, use_container_width=True, height=300)
+    section_title("Column Data Types & Missing Values")
+    info_df = pd.DataFrame({
+        "Column": df.columns,
+        "Data Type": df.dtypes.astype(str).values,
+        "Missing Values": df.isnull().sum().values,
+        "Unique Values": [df[c].nunique() for c in df.columns],
+    })
+    st.dataframe(info_df, use_container_width=True, height=300)
         
 elif page == "🔍 Exploratory Data Analysis":
     st.title("🔍 Exploratory Data Analysis")
