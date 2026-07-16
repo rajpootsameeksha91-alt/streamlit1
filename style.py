@@ -81,8 +81,6 @@ footer {visibility: hidden;}
 #MainMenu {visibility: hidden;}
 </style>
 """
-
-# Define variables explicitly so app.py can import them
 COLOR_SEQUENCE = ["#0F9D8C", "#38BDF8", "#F97316", "#A855F7", "#EF4444"]
 GENDER_COLOR_MAP = {"Female": "#EC4899", "Male": "#38BDF8"}
 
