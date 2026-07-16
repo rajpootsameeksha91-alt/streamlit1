@@ -7,7 +7,7 @@ import seaborn as sns
 from mappings import ( ADMISSION_TYPE, DISCHARGE_DISPOSITION, ADMISSION_SOURCE, AGE_ORDER, MEDICATION_COLUMNS, READMIT_ORDER, READMIT_LABELS,)
 from style import ( inject_css, section_title, insight, COLOR_SEQUENCE, GENDER_COLOR_MAP,)
 
-st.set_page_config(  page_title="Diabetic Patient Healthcare Analysis", page_icon="🩺", layout="wide",)
+st.set_page_config(page_title="Diabetic Patient Healthcare Analysis", page_icon="🩺", layout="wide")
 
 inject_css()
 sns.set_theme(style="whitegrid", palette="crest")
@@ -24,7 +24,7 @@ def load_data():
 df = load_data()
 st.sidebar.markdown("## 🩺 Sidebar")
 page = st.sidebar.radio(
-    "Go to",  [ "🏠 Home", "🔍 Exploratory Data Analysis", "🏥 Hospital & Clinical Insights","💊 Medication Analysis", "🔄 Readmission Analysis", "📊 Interactive Dashboard", ], )
+    "Go to",  ["🏠 Home", "🔍 Exploratory Data Analysis", "🏥 Hospital & Clinical Insights","💊 Medication Analysis", "🔄 Readmission Analysis", "📊 Interactive Dashboard"], )
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
@@ -62,29 +62,25 @@ if page == "🏠 Home":
         st.dataframe(df.drop(columns=["age"]).assign(age=df["age"].astype(str)).head(12), use_container_width=True)
     with right:
         section_title("Column Groups")
-        st.markdown(
-            """
+        st.markdown("""
             - **Identifiers**: Encounter_ID, Patient_ID
             - **Demographics**: race, gender, age
             - **Admission Details**: admission_type, discharge_disposition, admission_source
-            - **Clinical Utilization**: Hospital_Stay, Lab_Procedures, Procedures, Medications,
-              Outpatient/Emergency/Inpatient Visits
+            - **Clinical Utilization**: Hospital_Stay, Lab_Procedures, Procedures, Medications, Outpatient/Emergency/Inpatient Visits
             - **Diagnoses**: diag_1, diag_2, diag_3, Diagnoses
             - **Medications (23 drugs)**: metformin, insulin, glipizide, etc.
             - **Outcome**: readmitted
-            """
-        )
+            """)
 
         section_title("Column Data Types & Missing Values")
-          info_df = pd.DataFrame({
-               "Column": df.columns,
-               "Data Type": df.dtypes.astype(str).values,
-               "Missing Values": df.isnull().sum().values,
-               "Unique Values": [df[c].nunique() for c in df.columns],
-           })
-           st.dataframe(info_df, use_container_width=True, height=300)
-
-
+        info_df = pd.DataFrame({
+            "Column": df.columns,
+            "Data Type": df.dtypes.astype(str).values,
+            "Missing Values": df.isnull().sum().values,
+            "Unique Values": [df[c].nunique() for c in df.columns],
+        })
+        st.dataframe(info_df, use_container_width=True, height=300)
+        
 elif page == "🔍 Exploratory Data Analysis":
     st.title("🔍 Exploratory Data Analysis")
     st.caption("Understanding the patient population — age, gender, and race distribution.")
