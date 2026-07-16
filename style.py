@@ -93,4 +93,4 @@ def section_title(text):
     st.markdown(f'<div class="section-title">{text}</div>', unsafe_allow_html=True)
 
 def insight(text):
-    st.markdown(f'<div class="insight-box">💡 {text}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="insight-box"> {text}</div>', unsafe_allow_html=True)
