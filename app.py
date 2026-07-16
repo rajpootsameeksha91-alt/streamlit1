@@ -75,7 +75,7 @@ if page == "🏠 Home":
             """
         )
 
-           section_title("Column Data Types & Missing Values")
+        section_title("Column Data Types & Missing Values")
            info_df = pd.DataFrame({
                "Column": df.columns,
                "Data Type": df.dtypes.astype(str).values,
