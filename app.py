@@ -50,7 +50,7 @@ if page == "🏠 Home":
         st.metric(label="On Diabetes Medication", value=f"{(df['diabetesMed'] == 'Yes').mean() * 100:.1f}%")
 
     st.write("")
-    section_title("Project Overview")
+    section_title("Overview")
     st.write("This dashboard explores a real-world clinical dataset of diabetic patient. The goal is purely analytical — understanding who the patients are, how they are treated, and how often they return to the hospital. ")
 
     left, right = st.columns([1.3, 1])
