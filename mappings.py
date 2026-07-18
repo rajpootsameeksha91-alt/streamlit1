@@ -6,7 +6,7 @@ ADMISSION_TYPE = {
     5: "Not Available",
     6: "Not Mapped/NULL",
     7: "Trauma Center",
-    8: "Not Mapped",
+    8: "Unknown",
 }
 
 DISCHARGE_DISPOSITION = {
@@ -58,10 +58,10 @@ ADMISSION_SOURCE = {
     13: "Sick Baby",
     14: "Extramural Birth",
     15: "Not Available",
-    17: "Not Mapped/NULL",
+    17: "Unknown",
     18: "Transfer from Home Health Agency",
     19: "Readmission to Same Home Health Agency",
-    20: "Not Mapped",
+    20: "Unknown",
     21: "Unknown/Invalid",
     22: "Transfer from Hospital Inpatient",
     23: "Born Inside this Hospital",
