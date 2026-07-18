@@ -28,12 +28,12 @@ Opens at http://localhost:8501
 
 ## Pages
 
-- Home — overview, KPIs, dataset snapshot
+- Home — overview,  dataset 
 - Exploratory Data Analysis — age, gender, race
 - Hospital & Clinical Insights — admissions, hospital stay, diagnoses, correlations
 - Medication Analysis — drug prescriptions and dosage changes
 - Readmission Analysis — readmission patterns
-- Interactive Dashboard — live filters, KPIs, CSV export
+- Interactive Dashboard — live filters,  
 
 ## Libraries
 
